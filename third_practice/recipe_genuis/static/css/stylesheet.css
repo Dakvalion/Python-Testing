@@ -1,0 +1,33 @@
+body {
+    background-color: rgb(255, 249, 188);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: orange;
+    font-weight: 900;
+}
+
+.btn {
+    text-decoration: none;
+    color: rgb(178, 126, 28);
+   font-size: 24px;
+}
+
+.recipe {
+    width: 140px;
+    height: 50px;
+    background-color: antiquewhite;
+    border: 2px solid orange;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.link {
+    text-decoration: none;
+    color: black
+}
+
+.detail {
+    color: black
+}
