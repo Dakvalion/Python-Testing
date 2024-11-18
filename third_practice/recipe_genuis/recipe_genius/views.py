@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import Recipe
 
 recipe_list = [
     {'title': "Pizza", 'recipe_id': 0},
@@ -14,18 +15,24 @@ def about_page(request):
 
 
 def catalog_page(request):
+    recipes = Recipe.objects.all()
+
     context = {
-        'recipe_list': recipe_list
+        'recipe_list': recipes.order_by('name')
     }
-    print(context)
 
     return render(request, 'catalog.html', context)
 
 
 def recipe_detail(request, i):
+    recipe = Recipe.objects.get(pk=i)
+    ingredients = recipe.recipeingredient_set.all().order_by('ingredient__name')
+
     context = {
-        'title': recipe_list[i]['title'],
-        'recipe_id': i + 1
+        'title': recipe.name,
+        'recipe_id': i,
+        'recipe_img': recipe.url,
+        'ingredients': ingredients
     }
 
     return render(request, 'recipe_detail.html', context)

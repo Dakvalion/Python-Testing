@@ -3,9 +3,14 @@
 
 {% block content %}
 <a class="btn" href="/about">О нас</a>
-<div >
+<div class="catalog">
     {% for recipe in recipe_list %}
-    <div class="recipe"><a class="link" href="{% url 'recipe_detail' recipe.recipe_id %}">{{recipe.title}}</a></div>
+    
+        <a class="link" href="{% url 'recipe_detail' recipe.id %}">
+            <div class="recipe"><img class="recipe_img" src="{% static recipe.url %}" alt="{{recipe.name}}">
+                <span>{{recipe.name}}</span></div>
+            
+        </a>
         
     {% endfor %}
 </div>

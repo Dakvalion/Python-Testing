@@ -20,7 +20,7 @@ from recipe_genius import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path('', views.catalog_page),
-    path('about', views.about_page),
+    path('', views.catalog_page, name='catalog_page'),
+    path('about', views.about_page, name='about_page'),
     path('recipe/<int:i>', views.recipe_detail, name='recipe_detail'),
 ]
