@@ -8,7 +8,10 @@
     
         <a class="link" href="{% url 'recipe_detail' recipe.id %}">
             <div class="recipe"><img class="recipe_img" src="{% static recipe.url %}" alt="{{recipe.name}}">
-                <span>{{recipe.name}}</span></div>
+                <span>{{recipe.name}}</span>
+            </div>
+            <p>Автор: {{recipe.author}}</p>
+                
             
         </a>
         

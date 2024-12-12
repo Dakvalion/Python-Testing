@@ -15,12 +15,18 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from recipe_genius import views
 
 urlpatterns = [
+    path('', include('django.contrib.auth.urls')),
+    path('profile', views.profile, name='profile'),
     path("admin/", admin.site.urls),
     path('', views.catalog_page, name='catalog_page'),
     path('about', views.about_page, name='about_page'),
     path('recipe/<int:i>', views.recipe_detail, name='recipe_detail'),
+    path('create_recipe', views.create_recipe, name='create_recipe'),
+    path('add_ingredient', views.add_ingredient, name='add_ingredient'),
+    path('update_recipe/<int:i>/', views.update_recipe, name='update_recipe'),
+    path('delete_recipe/<int:i>/', views.delete_recipe, name='delete_recipe'),
 ]

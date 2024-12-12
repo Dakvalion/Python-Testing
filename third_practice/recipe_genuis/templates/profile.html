@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <h2>Личный кабинет</h2>
+    <hr>
+    <p>Hi {{ request.user.username }}!</p>
+    <a href="/create_recipe" class="btn" style="margin-left: 0px;">Добавить рецепт</a>
+    <a href="/add_ingredient" class="btn" style="margin-left: 0px;">Добавить ингредиент</a>
+    <div class="catalog">
+    {% for recipe in recipe_list %}
+    
+        {% if request.user.username == recipe.author%}
+        <a class="link" href="{% url 'recipe_detail' recipe.id %}">
+            <div class="profile_recipe">
+                <img class="recipe_img" src="{% static recipe.url %}" alt="{{recipe.name}}">
+                <div class="user_actions">
+                    <p>{{recipe.name}}</p>
+                    <a href="{% url 'update_recipe' recipe.id %}"><img src="static/img/edit.png" alt="edit" width="20px"></a>
+                    <a href="{% url 'delete_recipe' recipe.id %}"><img src="static/img/trash.png" alt="trash" width="20px"></a>
+                </div>
+            </div>
+        </a>
+        {% endif %}
+        
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
