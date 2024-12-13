@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .forms import IngredientForm, RecipeForm, RecipeIngredientFormSet
 from django.http import Http404
+from django.contrib.auth import logout
 from .models import Recipe
 
 recipe_list = [
@@ -26,6 +27,12 @@ def profile(request):
     }
 
     return render(request, 'profile.html', context)
+
+
+@login_required
+def user_logout(request):
+    logout(request)
+    return redirect('/')
 
 
 def catalog_page(request):

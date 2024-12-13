@@ -21,6 +21,7 @@ from recipe_genius import views
 urlpatterns = [
     path('', include('django.contrib.auth.urls')),
     path('profile', views.profile, name='profile'),
+    path('logout', views.user_logout, name='logout'),
     path("admin/", admin.site.urls),
     path('', views.catalog_page, name='catalog_page'),
     path('about', views.about_page, name='about_page'),
